@@ -9,8 +9,8 @@ import { NgForm } from '@angular/forms';
 export class TemplateFormComponent {
 
   usuario: any = {
-    nome: 'loiane',
-    email: 'loiane@email.com'
+    nome: '',
+    email: ''
   }
   onSubmit(form: NgForm) {
     console.log(form);
