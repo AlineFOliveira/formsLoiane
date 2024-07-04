@@ -26,6 +26,7 @@ export class TemplateFormComponent {
     const inputElement = event.target as HTMLInputElement;//pra pegar o value; fala q o event.target é um htmlinputelement
     let cep = inputElement.value
     cep = cep.replace(/\D/g, '');
+    console.log(cep)
 
     if(cep != ""){
       var validacep = /^[0-9]{8}$/;
@@ -36,19 +37,18 @@ export class TemplateFormComponent {
     }
   }
 
-  populaDadosForm(dados: any, form: any){
-    form.setValue({
-      nome: null,
-      email: null,
-      endereco:{
-        rua: dados.logradouro,
-        cep: dados.cep,
-        numero: '',
-        complemento: dados.complemento,
-        bairro: dados.bairro,
-        cidade: dados.localidade,
-        estado: dados.uf
+  populaDadosForm(dados: any, form: NgForm) {
+    console.log(dados);
+
+    form.form.patchValue({
+      endereco: {
+        rua: dados.logradouro || '',
+        cep: dados.cep || '',
+        complemento: dados.complemento || '',
+        bairro: dados.bairro || '',
+        cidade: dados.localidade || '',
+        estado: dados.uf || ''
       }
-    })
+    });
   }
 }
