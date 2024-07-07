@@ -7,13 +7,15 @@ import { TemplateFormComponent } from './template-form/template-form.component';
 import { DataFormComponent } from './data-form/data-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateFormComponent,
-    DataFormComponent
+    DataFormComponent,
+    CampoControlErroComponent
   ],
   imports: [
     BrowserModule,

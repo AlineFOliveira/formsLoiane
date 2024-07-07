@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div>
+    <div ngModelGroup="endereco">
 
         <div class="form-group row">
             <div class="col-md-3">
@@ -48,7 +48,7 @@
             </div>
 
             <div class="col-md-6">
-                <label for="complemento" class="control-label">Número</label>
+                <label for="complemento" class="control-label">Complemento</label>
                 <input type="text" class="form-control" id="complemento" name="complemento" ngModel required
                     #complemento="ngModel">
                 <div *ngIf="!complemento.valid && complemento.touched" class="alert alert-danger">
