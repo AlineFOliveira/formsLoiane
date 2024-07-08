@@ -8,6 +8,7 @@ import { DataFormComponent } from './data-form/data-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
+import { DropdownService } from './shared/services/dropdown.service';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CampoControlErroComponent } from './shared/campo-control-erro/campo-con
   ],
   providers: [
     provideClientHydration(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    DropdownService
   ],
   bootstrap: [AppComponent]
 })
