@@ -16,7 +16,15 @@ export class TemplateFormComponent {
 
   usuario: any = {
     nome: '',
-    email: ''
+    email: '',
+    endereco: {
+      rua: '',
+      cep: '',
+      complemento: '',
+      bairro: '',
+      cidade: '',
+      estado: ''
+    }
   }
   onSubmit(form: NgForm) {
     console.log(form);
@@ -32,7 +40,7 @@ export class TemplateFormComponent {
       var validacep = /^[0-9]{8}$/;
 
       if(validacep.test(cep)){//test é para testar se uma string corresponde a uma determinada expressão regular
-        this.Http.get(`//viacep.com.br/ws/${cep}/json`).subscribe(dados => this.populaDadosForm(dados, form))
+        this.Http.get(`//viacep.com.br/ws/${cep}/json`).subscribe((dados:any) => this.populaDadosForm(dados, form))
       }
     }
   }
