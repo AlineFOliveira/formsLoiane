@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
 import { DropdownService } from './shared/services/dropdown.service';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -22,12 +23,14 @@ import { DropdownService } from './shared/services/dropdown.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(withFetch()),
-    DropdownService
+    DropdownService,
+  
   ],
   bootstrap: [AppComponent]
 })

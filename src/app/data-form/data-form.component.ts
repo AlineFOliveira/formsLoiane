@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br';
+import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 
 @Component({
   selector: 'app-data-form',
@@ -21,7 +22,8 @@ export class DataFormComponent {
   constructor(
     private http: HttpClient, 
     private formBuilder: FormBuilder,
-    private dropdownService: DropdownService
+    private dropdownService: DropdownService,
+    private cepService: ConsultaCepService
   ) {
     //construtor de formulário
     this.formulario = this.formBuilder.group({
@@ -97,20 +99,11 @@ export class DataFormComponent {
 
   consultaCEP() {
     let cep = this.formulario.get('endereco.cep')!.value;
-    cep = cep.replace(/\D/g, '');
-    console.log(cep);
 
-    if (cep != '') {
-      var validacep = /^[0-9]{8}$/;
-
-      if (validacep.test(cep)) {
-        //test é para testar se uma string corresponde a uma determinada expressão regular
-        this.resetaDadosForm();
-        this.http
-          .get(`//viacep.com.br/ws/${cep}/json`)
-          .subscribe((dados) => this.populaDadosForm(dados));
-      }
+    if(cep != null && cep !== ''){
+      this.cepService.consultaCEP(cep)?.subscribe((dados) => this.populaDadosForm(dados));
     }
+
   }
   public populaDadosForm(dados: any) {
     this.formulario.patchValue({
